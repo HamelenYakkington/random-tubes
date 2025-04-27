@@ -1,5 +1,5 @@
 <template>
-  <img src="../assets/logo.webp" alt="logo_randomTubes" />
+  <img src="../assets/images/logo.webp" alt="logo_randomTubes" />
 </template>
 
 <script>

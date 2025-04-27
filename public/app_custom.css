@@ -1,0 +1,76 @@
+/* ---------------------------------------------------------------------------------- */
+/*                               -- Variable Css --                                   */
+/* ---------------------------------------------------------------------------------- */
+:root {
+    --primary: #f5b800;
+    --secondary: black;
+    --third: #1d1d1dee;
+    --shadow: #684e02;
+  }
+
+  .a_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: translate 0.3s;
+    border: 0px;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 0.375rem;
+    padding-bottom: 0.375rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 5px;
+    border-radius: 5px;
+  }
+  
+  .a_button:hover {
+    translate: -2px -2px;
+    box-shadow: 5px 5px 5px var(--secondary);
+  }
+  
+  .a_button_primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--primary);
+    color: var(--secondary);
+    transition: translate 0.3s;
+    border: 0px;
+  }
+  
+  .a_button_primary:hover {
+    translate: -2px -2px;
+    box-shadow: 5px 5px 5px var(--shadow);
+  }
+  
+  .a_button_secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--secondary);
+    color: var(--primary);
+    transition: translate 0.3s;
+    border: 0px;
+  }
+  
+  .a_button_secondary:hover {
+    translate: -2px -2px;
+    box-shadow: 5px 5px 5px var(--shadow);
+  }
+  
+  .a_button_disabled {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #464646;
+    color: #6c6c6c;
+    border: 0px;
+  }
+  
+  .a_button_disabled:hover {
+    cursor: default;
+  }

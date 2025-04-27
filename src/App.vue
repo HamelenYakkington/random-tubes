@@ -118,13 +118,13 @@ export default {
   border: solid 5px #f5b800;
   border-radius: 20px;
   max-width: 256px;
-  min-width: 65px;
+  min-width: 150px;
   width: 10vw;
   max-height: 100px;
-  min-height: 25px;
+  min-height: 50px;
   height: 4vw;
   margin-top: 10px;
-  font-size: clamp(0.6rem, 1.5vw, 1.2rem);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 

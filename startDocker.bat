@@ -1,2 +1,3 @@
 docker compose down -v
-dokcer compose up --build
+docker compose up --build
+set /p DUMMY=Hit ENTER to continue...

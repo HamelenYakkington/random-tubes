@@ -9,12 +9,12 @@
           href="https://www.linkedin.com/in/steven-lef%C3%A8bvre-9697b127b/"
           target="”_blank”"
         >
-          <img src="../assets/linkedin.webp" alt="logo_linkedin" />
+          <img src="../assets/images/linkedin.webp" alt="logo_linkedin" />
         </a>
       </div>
       <div class="logoFooter logo_git">
         <a href="https://github.com/HamelenYakkington" target="”_blank”">
-          <img src="../assets/github.webp" alt="logo_github" />
+          <img src="../assets/images/github.webp" alt="logo_github" />
         </a>
       </div>
     </div>
@@ -35,6 +35,7 @@ export default {
 <style>
 .footer {
   background-color: black;
+  min-height: 50px;
 }
 
 .logoFooter img {
