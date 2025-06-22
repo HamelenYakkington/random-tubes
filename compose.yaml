@@ -1,5 +1,18 @@
 services:
   front:
-      build: .
-      ports:
-        - "8080:80"
+    build:
+      context: .
+    ports:
+      - "80:80"
+    container_name: front
+
+  cypress:
+    image: cypress/included:12.17.1
+    depends_on:
+      - front
+    environment:
+      - CYPRESS_baseUrl=http://front:80
+    volumes:
+      - .:/e2e
+    working_dir: /e2e
+    command: cypress run --config-file=/e2e/cypress.config.js

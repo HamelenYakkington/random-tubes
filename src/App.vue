@@ -14,8 +14,8 @@
       </div>
       <div class="description_start">
         <u><strong>Random Tubes</strong></u
-        >, a web app enabling you to pick random media from YouTube, use search
-        filters to refine your selection, and view statistics.
+        >, a web app enabling you to pick random media from YouTube, adn use
+        search.
       </div>
       <button @click="setStartTrue">Start</button>
       <div class="footer_start">{{ copyrightText }}</div>
@@ -40,9 +40,9 @@ export default {
   data() {
     var copyrightText_var = `© ${new Date().getFullYear()} Steven Lefebvre tous droits réservés`;
     var start_var = false;
-    if (this.$cookies.get("start")) {
-      start_var = true;
-    }
+    // if (this.$cookies.get("start")) {
+    //   start_var = true;
+    // }
     return {
       start: start_var,
       copyrightText: copyrightText_var,

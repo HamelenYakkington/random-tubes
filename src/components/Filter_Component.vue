@@ -170,8 +170,6 @@ export default {
       this.publishedBefore = this.temp_publishedBefore;
       this.publishedAfter = this.temp_publishedAfter;
 
-      console.log(this.language);
-
       this.$emit("apply-filters", {
         keyword: this.temp_keyword,
         duration: this.temp_duration,
@@ -187,7 +185,11 @@ export default {
     loadCategories() {
       const apiKey = process.env.VUE_APP_TOKEN_API;
       if (!apiKey) {
-        console.error("Error : API key missing");
+        const message_error = "Error : API key missing";
+        this.$emit("message", {
+          newMessage: message_error,
+          newTypeMessage: "error",
+        });
         return;
       }
 
@@ -210,7 +212,11 @@ export default {
     loadLanguages() {
       const apiKey = process.env.VUE_APP_TOKEN_API;
       if (!apiKey) {
-        console.error("Error : API key missing");
+        const message_error = "Error : API key missing";
+        this.$emit("message", {
+          newMessage: message_error,
+          newTypeMessage: "error",
+        });
         return;
       }
 

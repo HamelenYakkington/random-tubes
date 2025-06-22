@@ -90,7 +90,7 @@ export default {
         const maxResult = 3;
 
         if (!apiKey) {
-          console.error("Error : API key missing");
+          this.updateMessage("Error : API key missing", "error");
           return;
         }
 

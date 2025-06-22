@@ -7,7 +7,7 @@
       <div class="logoFooter logo_linkedin">
         <a
           href="https://www.linkedin.com/in/steven-lef%C3%A8bvre-9697b127b/"
-          target="”_blank”"
+          target="_blank"
         >
           <img src="../assets/images/linkedin.webp" alt="logo_linkedin" />
         </a>
@@ -26,7 +26,7 @@ export default {
   name: "FooterComponent",
   data() {
     return {
-      copyrightText: `© ${new Date().getFullYear()} Steven Lefebvre tous droits réservés`,
+      copyrightText: `© ${new Date().getFullYear()} Steven Lefebvre`,
     };
   },
 };
