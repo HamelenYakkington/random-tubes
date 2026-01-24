@@ -27,3 +27,5 @@ pnpm-debug.log*
 *.sln
 *.sw?
 .env
+cypress/videos/appPage.cy.js.mp4
+cypress/videos/homePage.cy.js.mp4
