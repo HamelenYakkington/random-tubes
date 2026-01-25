@@ -9,16 +9,20 @@ describe("Testing First Page", () => {
     cy.url().should("include", "/");
   });
 
+    /* -------------------------------------------------------------------------------------- */
+  /*                                        Testing header                                  */
+  /* -------------------------------------------------------------------------------------- */
 
+  it("Header is visible", () => {
+    cy.get(".div_head").should("be.visible");
+  });
+  
 
-
-
-
-
-
-
-
-
+  it("Header title is RandomTubes", () => {
+    cy.get("div.title_head.col-sm-2.col-12")
+      .should("be.visible")
+      .should("contain.text", "RandomTubes");
+  })
 
 
     /* -------------------------------------------------------------------------------------- */
@@ -51,5 +55,21 @@ describe("Testing First Page", () => {
 
   it("Footer is visible", () => {
     cy.get(".footer").should("be.visible");
+  });
+});
+
+
+
+
+
+
+it("Have an YouTube API Token", () => {
+  cy.get("body").then(($body) => {
+    const flash = $body.find(".flash_message:visible");
+
+    if (flash.length) {
+      cy.wrap(flash)
+        .should("not.contain.text", "Error : API key missing");
+    }
   });
 });
