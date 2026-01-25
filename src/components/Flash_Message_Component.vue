@@ -21,6 +21,7 @@ export default {
   props: {
     message: String,
     typeMessage: String,
+    timeout: Number,
   },
   data() {
     return { classMessage: "" };
@@ -29,6 +30,8 @@ export default {
     closeMessage() {
       this.$emit("update:message", "");
       this.$emit("update:typeMessage", "");
+      this.$emit("update:timeout", "");
+
     },
 
     handleMessageChange() {
@@ -43,9 +46,13 @@ export default {
           this.classMessage = "flash_message_disabled";
           break;
       }
-      setTimeout(() => {
-        this.closeMessage();
-      }, 3000);
+
+      if (this.timeout === Infinity || this.timeout === null) 
+        return;
+      else
+        setTimeout(() => {
+          this.closeMessage();
+        }, this.timeout);
     },
   },
   watch: {

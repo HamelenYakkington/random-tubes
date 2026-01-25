@@ -189,6 +189,7 @@ export default {
         this.$emit("message", {
           newMessage: message_error,
           newTypeMessage: "error",
+          newTimeout: Infinity 
         });
         return;
       }
@@ -216,6 +217,7 @@ export default {
         this.$emit("message", {
           newMessage: message_error,
           newTypeMessage: "error",
+          newTimeout: Infinity 
         });
         return;
       }

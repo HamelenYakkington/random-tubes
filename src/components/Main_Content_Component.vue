@@ -45,6 +45,7 @@
     <FashMessageComponent
       :message="message"
       :typeMessage="typeMessage"
+      :timeout="timeout"
       @update:message="updateMessage"
       @update:typeMessage="updateTypeMessage"
     />
@@ -90,7 +91,7 @@ export default {
         const maxResult = 3;
 
         if (!apiKey) {
-          this.updateMessage("Error : API key missing", "error");
+          this.updateMessage("Error : API key missing", "error", Infinity);
           return;
         }
 
@@ -101,6 +102,8 @@ export default {
 
         if (this.keyword != "") {
           youtubeApiUrl += `&q=${this.keyword}`;
+        } else {
+          youtubeApiUrl += `&q=%22%20%22`;
         }
 
         if (this.duration != "") {
@@ -131,6 +134,8 @@ export default {
           youtubeApiUrl += `&pageToken=${this.nexPageToken}`;
         }
         youtubeApiUrl += `&key=${apiKey}`;
+
+        console.log(youtubeApiUrl)
 
         fetch(youtubeApiUrl)
           .then((response) => response.json())
@@ -163,9 +168,12 @@ export default {
         this.current_url = this.prec_url.pop();
       }
     },
-    updateMessage(newMessage, newTypeMessage) {
+    updateMessage(newMessage, newTypeMessage, newTimeout = 3000) {
       this.message = newMessage;
       this.typeMessage = newTypeMessage;
+      this.timeout = newTimeout;
+      console.log("New Timeout : " + newTimeout)
+      console.log("Timeout : " + this.timeout)
     },
     onIframeLoad() {
       this.isLoading = false;
@@ -210,7 +218,7 @@ export default {
       );
     },
     handleMessageUpdate(payload) {
-      this.updateMessage(payload.newMessage, payload.newTypeMessage);
+      this.updateMessage(payload.newMessage, payload.newTypeMessage, payload.newTimeout);
     },
   },
 };
