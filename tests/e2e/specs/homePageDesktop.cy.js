@@ -1,6 +1,7 @@
-describe("Testing Home Page", () => {
+describe("Testing Desktop Home Page", () => {
   beforeEach(() => {
     cy.visit("/");
+    cy.viewport(1280, 720)
   });
 
   it("Accesses the website", () => {

@@ -1,6 +1,7 @@
-describe("Testing First Page", () => {
+describe("Testing Lecter Page", () => {
   beforeEach(() => {
     cy.visit("/");
+    cy.viewport(1280, 720)
     cy.get(".content_start button")
     .click();
   });
@@ -100,7 +101,7 @@ it("Next button is not disabled", () => {
     .and("have.class", "a_button_primary");
 });
 
-it("Clicking the Next button enable the prev button and update the iframe src", () => {
+it("Clicking the next button updates the iframe", () => {
   const initialSrc =
     "https://www.youtube.com/embed/jNQXAC9IVRw?si=TOifG8yNjoy6pwNY";
 
@@ -111,10 +112,30 @@ it("Clicking the Next button enable the prev button and update the iframe src", 
   cy.get("div.tube_reader > iframe")
     .should("have.attr", "src")
     .and("not.equal", initialSrc);
+});
+
+it("Clicking the Next button enable the prev button", () => {
+  cy.get("div > button.next_button")
+    .should("be.visible")
+    .click();
 
   cy.get("div > button.prev_button")
     .should("be.visible")
-    .and("not.have.class", "a_button_disabled")
+    .and("not.have.class", "a_button_disabled");
+});
+
+it("Clicking the prev button after the next button, will display the previous media in the iframe", () => {
+  const initialSrc =
+    "https://www.youtube.com/embed/jNQXAC9IVRw?si=TOifG8yNjoy6pwNY";
+
+  cy.get("div > button.next_button")
+    .click();
+
+  cy.get("div.tube_reader > iframe")
+    .should("have.attr", "src")
+    .and("not.equal", initialSrc);
+    
+  cy.get("div > button.prev_button")
     .click();
 
   cy.get("div.tube_reader > iframe")
@@ -122,7 +143,67 @@ it("Clicking the Next button enable the prev button and update the iframe src", 
     .and("equal", initialSrc);
 });
 
+it("Clicking the next button does not disable it", () => {
+  cy.get("div > button.next_button")
+    .click();
+    
+  cy.get("div > button.next_button")
+    .should("be.visible")
+    .and("not.have.class", "a_button_disabled");
+});
+
+it("Verify iframe URL persistence when navigating Next → Previous → Next", () => {
+  cy.get("div > button.next_button").click();
+
+  cy.get("div.tube_reader > iframe")
+    .invoke("attr", "src")
+    .as("nextUrl");
+
+  cy.get("div > button.prev_button").click();
+
+  cy.get("div > button.next_button").click();
+
+  cy.get("@nextUrl").then((nextUrl) => {
+    cy.get("div.tube_reader > iframe")
+      .should("have.attr", "src", nextUrl);
+  });
+});
+
+  /* -------------------------------------------------------------------------------------- */
+  /*                                        Testing Filter Button                           */
+  /* -------------------------------------------------------------------------------------- */
+
+it("Filter window isn't active", () => {
+  cy.get("#app > div > div.content.content_randomTube > div.main_content > div.div_filter")
+    .should("not.have.class", "div_filter_active");
+});
+
+it("Filter button is displayed", () => {
+  cy.get("#app > div > div.content.content_randomTube > div.main_content > div.div_filter > div.search_gest > button")
+    .should("be.visible")
+});
+
+it("Clicking the filter button open the filter window", () => {
+  cy.get("#app > div > div.content.content_randomTube > div.main_content > div.div_filter > div.search_gest > button")
+    .click()
+
+  cy.get("#app > div > div.content.content_randomTube > div.main_content > div.div_filter")
+    .should("have.class", "div_filter_active");
+});
 
 
+  /* -------------------------------------------------------------------------------------- */
+  /*                                        Testing Filter Window                           */
+  /* -------------------------------------------------------------------------------------- */
+it("In the filter window, clicking the filter button should close the window", () => {
+  cy.get("#app > div > div.content.content_randomTube > div.main_content > div.div_filter > div.search_gest > button")
+    .click()
+
+  cy.get("#app > div > div.content.content_randomTube > div.main_content > div.div_filter > div.search_gest > button")
+    .click()
+
+  cy.get("#app > div > div.content.content_randomTube > div.main_content > div.div_filter")
+    .should("not.have.class", "div_filter_active");
+});
 
 });
