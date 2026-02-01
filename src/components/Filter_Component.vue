@@ -98,13 +98,13 @@
         </div>
       </form>
       <div class="row mb-3 div_gest_filter">
-        <button class="col-6 a_button button_reset" @click="resetFilter">
+        <button class="col-4 col-md-6 a_button button_reset" @click="resetFilter">
           Reset
         </button>
-        <button class="col-6 a_button button_cancel" @click="cancelFilter">
+        <button class="col-4 col-md-6 a_button button_cancel" @click="cancelFilter">
           Cancel
         </button>
-        <button class="col-12 a_button button_submit" @click="submitFilter">
+        <button class="col-4 col-md-12 a_button button_submit" @click="submitFilter">
           Submit
         </button>
       </div>
@@ -262,7 +262,7 @@ export default {
 }
 
 .div_filter_active {
-  transform: translateY(calc(100% - 60vh));
+  transform: translateY(calc(100% - 450px));
 }
 
 .filters_param {
@@ -273,8 +273,8 @@ export default {
   border-radius: 15px 15px 0 0;
   height: 100vh;
   background-color: var(--third);
-  transition: transform 0.5s ease-out, opacity 0.3s ease-out;
-  opacity: 0;
+  transition: transform 0.5s ease-out;
+  z-index:1;
 }
 
 .div_filter_active .filters_param {
@@ -311,7 +311,7 @@ export default {
 
 @media (max-width: 768px) {
   .div_filter_active {
-    transform: translateY(calc(100% - 100vh + 100px));
+    transform: translateY(calc(100% - 92vh));
   }
 }
 </style>

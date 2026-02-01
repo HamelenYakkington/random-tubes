@@ -1,9 +1,9 @@
 <template>
   <div class="footer row d-flex justify-content-end align-items-center">
-    <div class="col-12 col-md-10 div_copyright">
+    <div class="col-8 col-md-10 div_copyright">
       <span class="copyright-span">{{ copyrightText }}</span>
     </div>
-    <div class="div_logo col-12 col-md-1">
+    <div class="div_logo col-4 col-md-1">
       <div class="logoFooter logo_linkedin">
         <a
           href="https://www.linkedin.com/in/steven-lef%C3%A8bvre-9697b127b/"
@@ -26,7 +26,7 @@ export default {
   name: "FooterComponent",
   data() {
     return {
-      copyrightText: `© ${new Date().getFullYear()} Steven Lefebvre`,
+      copyrightText: `© ${new Date().getFullYear()} Steven Lefèbvre`,
     };
   },
 };
@@ -36,6 +36,7 @@ export default {
 .footer {
   background-color: black;
   min-height: 50px;
+  z-index:2000;
 }
 
 .logoFooter img {
